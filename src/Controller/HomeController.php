@@ -14,11 +14,34 @@ class HomeController extends AbstractController{
 
     /**
      * Création de notre 1ère route
-     * @Route("/")
-     * 
+     * @Route("/", name="homepage") 
      */
     public function home(){
+        $noms = [
+            'Durand'=>'Visiteur',
+            'Dupont'=>'Contributeur',
+            'Astaire'=>'Membre',
+            'Letellier'=>'Admin'
+        ];
+        return $this->render('home.html.twig',[
+            'title'=>'Accueil',
+            'acces'=>'visiteur',
+            'tableau'=>$noms
+        ]);
+    }
 
-        return new Response("<h1>Ma première page</h1>");
+    /**
+     * Montre la page qui salue l'utilisateur
+     * @Route("/hello/{nom}", name="hello-utilisateur")
+     * @Route("/hello", name="hello-base")
+     * @Route("/profil/{nom}/acces/{acces}", name="hello-profil")
+     * @return void
+     */
+    public function hello($nom="anonyme",$acces="visiteur"){
+        return $this->render("hello.html.twig",[
+            'title' => 'Page de profil',
+            'name' => $nom,
+            'acces' => $acces
+        ]);
     }
 }
