@@ -30,3 +30,6 @@ footer {
     width: 100%;
     color: #f3efef;
 }
+.form-error-message,span{
+    color: #111010;
+}
