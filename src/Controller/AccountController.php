@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -73,7 +74,8 @@ class AccountController extends AbstractController
 
     /**
      * Affichage de la page de profile d'un user
-     * @Route("/profile", name="account_profile")
+     * @Route("account/profile", name="account_profile")
+     * @IsGranted("ROLE_USER")
      * @return Response
      */
     public function profile(Request $request,EntityManagerInterface $manager){
@@ -97,6 +99,7 @@ class AccountController extends AbstractController
     /**
      * Permet la modification du mot de passe
      * @Route("account/password-update", name="account_password")
+     * @IsGranted("ROLE_USER")
      * @return Response
      */
     public function updatePassword(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder)

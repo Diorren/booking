@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
@@ -21,6 +22,7 @@ class UserController extends AbstractController
     /**
      * Permet d'afficher la page de mon compte
      * @Route("/account", name="user_account")
+     * @IsGranted("ROLE_USER")
      * @return Response
      */
     public function myAccount()

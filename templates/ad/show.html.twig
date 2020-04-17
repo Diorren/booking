@@ -9,6 +9,10 @@
         <p class="mt-5">{{ad.description}}</p>
         <p class="mt-4">{{ad.rooms}} chambres pour {{ad.price}} &euro; / nuit</p>
         <a href="#" class="btn btn-warning buttonRes">Réserver</a>
+        {% if app.user == ad.author %}
+        <a href="{{ path('ads_edit',{'slug':ad.slug}) }}" class="btn btn-info buttonMod">Modifier l'annonce</a>
+        <a href="{{ path('ads_delete',{'slug':ad.slug}) }}" class="btn btn-danger buttonSup" onclick="return confirm(`Etes-vous sûr de vouloir supprimer cette annonce !`)">Supprimer l'annonce</a>
+        {% endif %}
     </div>
 </div>
 <div class="container">

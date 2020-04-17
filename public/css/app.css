@@ -24,6 +24,16 @@ body {background-color: #b6aeae;}
     position: absolute;
     bottom: 5%;
 }
+.buttonMod {
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+}
+.buttonSup {
+    position: absolute;
+    bottom: 5%;
+    left: 37.5%;
+}
 footer {
     position: fixed;
     bottom: 0;
