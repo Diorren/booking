@@ -33,3 +33,20 @@ footer {
 .form-error-message,span{
     color: #111010;
 }
+.avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+.avatar-medium {
+    max-width: 64px;
+    max-height:64px;
+}
+.avatar-small {
+    max-width: 32px;
+    max-height:32px;
+}
+.dropdown-divider {
+    background-color: rgb(151, 149, 149);
+    height: 0.15em;
+}

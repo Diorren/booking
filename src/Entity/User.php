@@ -81,10 +81,9 @@ class User implements UserInterface
      */
     private $ads;
 
-    public $fullname;
     public function getFullname()
     {
-        return $this->username = ($this->getFirstname() . ' ' . $this->getLastname()); 
+        return "{$this->firstname} {$this->lastname}"; 
     }
 
     public function __construct()

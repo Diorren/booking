@@ -133,14 +133,8 @@ class AccountController extends AbstractController
                 
                 // On redirige
                 return $this->redirectToRoute('account_profile');
-
-
-
-
-
             }
         }
-
         return $this->render('account/password.html.twig',[
             'passwordUpdate' => $form->createView()
         ]);
