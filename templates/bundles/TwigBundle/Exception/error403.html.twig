@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title('Accès non autorisé - Erreur 403') %}
+{% block body %}
+	<div class="container text-center">
+		<h1>Oups ! L'accès à cette ressource n'est pas autorisé<br>Erreur 403</h1>
+
+        <div class="alert alert-danger">
+		    <h2 class="h4 mt-3">Accès interdit !</h2>        
+        </div>
+		<div class="text-center mt-5">
+			<a href="{{ path('homepage') }}" class="btn btn-primary">Retour à l'accueil</a>
+		</div>
+	</div>
+{% endblock %}
+

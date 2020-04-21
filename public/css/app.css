@@ -1,4 +1,7 @@
 body {background-color: #b6aeae;}
+a {
+    color: rgb(218, 47, 47);
+}
 .container {margin-top:1.2em;}
 .ad-title {
     background:url(https://placeimg.com/640/480/nature) no-repeat 0 0 #000;
@@ -59,4 +62,50 @@ footer {
 .dropdown-divider {
     background-color: rgb(151, 149, 149);
     height: 0.15em;
+}
+.old.disabled.day,.disabled.day {
+    background-color: rgb(240, 198, 198) !important;
+    color: #000 !important;
+    text-decoration: line-through;
+}
+.day {
+    background-color: rgb(178, 241, 241) !important;
+    color: #000 !important;
+}
+.active.day {
+    background-color: rgb(119, 159, 233) !important;
+}
+
+/* STRIPE */
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+.modal-title {
+    background-color: cornflowerblue;
+    padding: 1em;
+}
+.total {
+    background-color: cornflowerblue;
+    color: #000;
 }

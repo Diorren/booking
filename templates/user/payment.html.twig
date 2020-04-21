@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title('Mes paiements') %}
+
+{% block body %}
+	<div class="container">
+		<h1>Mes paiements</h1>
+		<div class="bg-light p-5 my-5">
+			<h2>Retrouvez ici toutes vos réservations</h2>
+		</div>
+
+		{% for bookings in app.user.bookings %}
+			<div class="row">
+				<div class="col-4">
+					<img src="{{booking.image}}" alt="Photo de l'annonce {{booking.image}}">
+				</div>
+				<div class="col-8">
+					<h4>{{booking.ad.title}}</h4>
+					<p>Réservation n°
+						{{booking.id}}</p>
+					<p>Du
+						{{booking.startDate|date('d/m/Y') }}
+						au
+						{{booking.endDate|date('d/m/Y')}}</p>
+					<p>pour un montant de
+						{{booking.amount}}
+						&euros;</p>
+					<a href=""></a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
+

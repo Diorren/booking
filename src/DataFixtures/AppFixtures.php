@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Ad;
+use App\Entity\Booking;
 use Faker\Factory;
 use App\Entity\Role;
 use App\Entity\User;
@@ -61,8 +62,8 @@ class AppFixtures extends Fixture
                  ->setIntroduction($faker->sentence())
                  ->setDescription($description)
                  ->setHash($hash)
-                 ->setAvatar($avatar)
-                 ;
+                 ->setAvatar($avatar);
+
             $manager->persist($user);
             $users[] = $user;
 
@@ -70,36 +71,62 @@ class AppFixtures extends Fixture
         }
         
         // ANNONCES
-
+            // (1ère partie)
         for($i=1; $i<=30; $i++){
-        $ad = new Ad();
+            $ad = new Ad();
 
-        $title = $faker->sentence();
-        $coverImage = $faker->imageUrl(200,150);
-        $description = $faker->paragraph(2);
-        $content = "<p>".join("</p><p>",$faker->paragraphs(5)). "</p>";
-        $user = $users[mt_rand(0,count($users)-1)];
-        
-        $ad->setTitle($title)
-           ->setCoverImage($coverImage)
-           ->setDescription($description)
-           ->setContent($content)
-           ->setPrice(mt_rand(30,200))
-           ->setRooms(mt_rand(3,8))
-           ->setAuthor($user)
-           ;
-        $manager->persist($ad);
+            $title = $faker->sentence();
+            $coverImage = $faker->imageUrl(200,150);
+            $description = $faker->paragraph(2);
+            $content = "<p>".join("</p><p>",$faker->paragraphs(5)). "</p>";
+            $user = $users[mt_rand(0,count($users)-1)];
+            
+            $ad->setTitle($title)
+            ->setCoverImage($coverImage)
+            ->setDescription($description)
+            ->setContent($content)
+            ->setPrice(mt_rand(30,200))
+            ->setRooms(mt_rand(3,8))
+            ->setAuthor($user);
 
-        for($j=1; $j <=mt_rand(2,5);$j++){
+            $manager->persist($ad);
 
-            // On crée une nouvelle instance de l'entité image
-            $image = new Image();
-            $image->setUrl($faker->imageUrl())
-                  ->setCaption($faker->sentence())
-                  ->setAd($ad);
-            // On sauvegarde
-            $manager->persist($image);
-        }
+            for($j=1; $j <=mt_rand(2,5);$j++){
+
+                // On crée une nouvelle instance de l'entité image
+                $image = new Image();
+                $image->setUrl($faker->imageUrl())
+                    ->setCaption($faker->sentence())
+                    ->setAd($ad);
+                // On sauvegarde
+                $manager->persist($image);
+            }
+            // (2ème partie)
+            // Gestion des Réservations
+            for($k=1;$k <= mt_rand(0,5);$k++){
+
+                $booking = new Booking();
+                $createdAt = $faker->dateTimeBetween('-6 months');
+                $startDate = $faker->dateTimeBetween('-3 months');
+                $duration = mt_rand(3,10);
+                $endDate = (clone $startDate)->modify("+ $duration days");
+                $amount = $ad->getPrice() * $duration;
+
+                // Trouver le booker
+                $booker = $users[mt_rand(0,count($users)-1)];
+                $comment = $faker->paragraph();
+
+                // Configuration de la Réservation
+                $booking->setBooker($booker)
+                        ->setAd($ad)
+                        ->setStartDate($startDate)
+                        ->setEndDate($endDate)
+                        ->setCreatedAt($createdAt)
+                        ->setAmount($amount)
+                        ->setComment($comment);
+
+                $manager->persist($booking);
+            }
         }
         $manager->flush();
     }
