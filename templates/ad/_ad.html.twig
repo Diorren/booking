@@ -17,7 +17,11 @@
         	{% endif %}
 		</div>
 		<div class="card-footer text-muted">
+		{% if ad.comments|length > 0 %}
+			{% include 'partials/rating.html.twig' with {'rating': ad.averageRatings} %} sur {{ad.comments|length}} avis.
+		{% else %}
 			<span>Pas encore noté</span>
+		{% endif %}
 		</div>
 	</div>
 </article>

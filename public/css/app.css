@@ -1,4 +1,4 @@
-body {background-color: #b6aeae;}
+body {background-color: #cac7c7;}
 a {
     color: rgb(218, 47, 47);
 }
@@ -59,6 +59,10 @@ footer {
     max-width: 32px;
     max-height:32px;
 }
+.avatar-xs {
+    max-width: 26px;
+    max-height: 26px;
+}
 .dropdown-divider {
     background-color: rgb(151, 149, 149);
     height: 0.15em;
@@ -108,4 +112,16 @@ footer {
 .total {
     background-color: cornflowerblue;
     color: #000;
+}
+
+/* COMMENTS */
+blockquote {
+    font-style: oblique;
+    color: rgb(37, 35, 35);
+}
+.rating i {
+    color: rgb(241, 223, 52);
+}
+small {
+    text-transform: initial;
 }
