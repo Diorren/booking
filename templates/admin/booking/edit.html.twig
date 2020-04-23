@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title ('Gestion des réservations') %}
+
+{% block body %}
+    <main class="container">
+        <h1 class="mt-5">Modification de la réservation N° {{booking.id}}</h1>
+        {{ form_start(adminBooking) }}
+        <div class="row">
+            <div class="col">
+                {{form_row(adminBooking.startDate)}}
+                {{form_row(adminBooking.endDate)}}
+                {{form_row(adminBooking.comment)}}
+            </div>
+            <div class="col">
+                {{form_row(adminBooking.booker)}}
+                {{form_row(adminBooking.ad)}}
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-info mb-5"><i class="fas fa-check"></i> Enregistrer</button>        
+        </div>
+        {{ form_end(adminBooking) }}
+    </main>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title ('Gestion des commentaires') %}
+
+{% block body %}
+
+<main class="container-fluid mt-5">
+    <h1 class="mb-3">Gestion des commentaires</h1>
+    <table class="table table-hover" cellpadding="0">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Avatar</th>
+                <th>Auteur</th>
+                <th>Commentaire</th>
+                <th>Annonce</th>
+                <th>Note</th>
+                <th>Actions</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comment in comments %}                
+            <tr>
+                <td>{{comment.id}}</td>
+                <td>{{comment.createdAt|date('d/m/Y')}}</td>
+                <td>
+                    <img src="{{comment.author.avatar}}" alt="{{comment.author.fullname}}" class="avatar avatar-small float-left">
+                </td>
+                <td>
+                    {{comment.author.fullname}}
+                </td>                
+                <td>{{comment.content}}</td>
+                <td>{{comment.ad.title}}</td>
+                <td><span class="badge badge-primary rounded">{{comment.ad.averageRatings|number_format(1,',','')}}</span></td>
+                <td>
+                <a href="{{ path('admin_comments_edit',{'id':comment.id}) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                <a href="{{ path('admin_comments_delete',{'id':comment.id}) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                </td>
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+
+   
+{% endblock %}

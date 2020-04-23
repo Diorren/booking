@@ -31,7 +31,9 @@
                     <dd class="col-md-8">{{booking.endDate|date('d/m/Y')}}</dd>
                     <dt class="col-md-4">Nombre de nuits:</dt>
                     <dd class="col-md-8">{{booking.duration}}</dd>
-                    <dt class="col-md-4">Total:</dt>
+                    <dt class="col-md-4">Prix par nuit:</dt>
+                    <dd class="col-md-8">{{booking.ad.price}}</dd>
+                    <dt class="col-md-4">Montant Total:</dt>
                     <dd class="col-md-8">{{booking.amount}}</dd>
                     <dt class="col-md-4">Commentaire:</dt>
                     <dd class="col-md-8">{{booking.comment|default('Aucun commentaire')}}</dd>

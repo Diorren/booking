@@ -70,6 +70,7 @@ class Booking
     /**
      * Callback appelé à chaqie fois qu'on crée une réservation
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @return Response
      */
     public function prePersist()
