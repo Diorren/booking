@@ -8,8 +8,8 @@
         <div class="bg-light p-5 my-5">
             <h2 class="h4">Retrouvez ici toutes vos réservations</h2>
         </div>
-
-        {% for booking in app.user.bookings %}
+        {% if app.user.bookings %}
+        {% for booking in pagination.data %}
         <div class="row border-bottom border-light mt-5">
             <div class="col-4">
                 <img src="{{booking.ad.coverImage}}" alt="Photo de l'annonce {{booking.ad.title}}" class="img-fluid">
@@ -32,6 +32,8 @@
             </div>        
         </div>
         {% endfor %}
+        {{pagination.display}}
+        {% endif %}
     </div>
 
 {% endblock %}

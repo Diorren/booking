@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\User;
+use App\Service\Pagination;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,13 +26,19 @@ class UserController extends AbstractController
 
     /**
      * Affiche la liste des réservations de l'utilisateur
-     * @Route("/user/bookings", name="user_bookings")
+     * @Route("/user/bookings/{page<\d+>?1}", name="user_bookings")
      * @IsGranted("ROLE_USER")
      * @return Response
      */
-    public function bookings()
+    public function bookings($page,Pagination $paginationService)
     {
-        return $this->render('user/bookings.html.twig');
+        $paginationService->setEntityClass(Booking::class)
+                          ->setLimit(5)
+                          ->setPage($page);
+
+        return $this->render('user/bookings.html.twig',[
+            'pagination' => $paginationService
+        ]);
     }
 
     /**

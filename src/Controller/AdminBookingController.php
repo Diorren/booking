@@ -16,10 +16,11 @@ class AdminBookingController extends AbstractController
     /**
      * @Route("/admin/bookings/{page<\d+>?1}", name="admin_bookings_list")
      */
-    public function index(BookingRepository $repo,Pagination $paginationService,$page)
+    public function index(BookingRepository $repo,$page,Pagination $paginationService)
     {
         $paginationService->setEntityClass(Booking::class)
                           ->setPage($page);
+                          //->setRoute('admin_comments_list')
 
         return $this->render('admin/booking/index.html.twig', [
             'pagination' => $paginationService
